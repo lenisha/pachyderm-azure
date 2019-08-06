@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"prometheus.io/port":"9091","prometheus.io/scrape":"true"},"creationTimestamp":null,"labels":{"app":"pachd","suite":"pachyderm"},"name":"pachd","namespace":"pachyderm"},"spec":{"ports":[{"name":"api-grpc-port","nodePort":30650,"port":650,"targetPort":0},{"name":"trace-port","nodePort":30651,"port":651,"targetPort":0},{"name":"api-http-port","nodePort":30652,"port":652,"targetPort":0},{"name":"saml-port","nodePort":30654,"port":654,"targetPort":0},{"name":"api-git-port","nodePort":30999,"port":999,"targetPort":0},{"name":"s3gateway-port","nodePort":30600,"port":600,"targetPort":0}],"selector":{"app":"pachd"},"type":"NodePort"},"status":{"loadBalancer":{}}}
+    prometheus.io/port: "9091"
+    prometheus.io/scrape: "true"
+  labels:
+    app: pachd
+    suite: pachyderm
+  name: pachd-lb
+  namespace: pachyderm
+spec:
+  ports:
+  - name: api-grpc-port
+    port: 30750
+    protocol: TCP
+    targetPort: 650
+  - name: trace-port
+    port: 30751
+    protocol: TCP
+    targetPort: 651
+  - name: api-http-port
+    port: 30752
+    protocol: TCP
+    targetPort: 652
+  - name: saml-port
+    port: 30754
+    protocol: TCP
+    targetPort: 654
+  - name: api-git-port
+    port: 30999
+    protocol: TCP
+    targetPort: 999
+  selector:
+    app: pachd
+  sessionAffinity: None
+  type: LoadBalancer
