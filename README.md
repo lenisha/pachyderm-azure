@@ -41,7 +41,8 @@ where `port` parameter points to exposed grpc port for websocket communication
 ## Run GRPCURL
 - Dockerfile has also utility called `grpcurl` to help send the grpc calls, run it to get version using `.proto` definition
 ```
-grpcurl -proto ./version.proto -plaintext  xxxxx:30750 versionpb.API.GetVersion
+kubectl run -it --rm pachctl --image=lenisha/pachctl --generator=run-pod/v1
+# grpcurl -proto version.proto -plaintext  xxxxx:30750 versionpb.API.GetVersion
 ```
 
 To install grpcutil locally see Dockerfile
