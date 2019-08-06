@@ -38,3 +38,9 @@ http://<dash-host>:8080/app?port=8081
 
 where `port` parameter points to exposed grpc port for websocket communication
 
+
+
+## References
+[https://github.com/pachyderm/pachyderm/issues/3232](https://github.com/pachyderm/pachyderm/issues/3232)
+[https://docs.pachyderm.io/en/latest/pachctl/pachctl_config_update_context.html?highlight=address](https://docs.pachyderm.io/en/latest/pachctl/pachctl_config_update_context.html?highlight=address)
+[https://docs.pachyderm.io/en/latest/reference/config_spec.html](https://docs.pachyderm.io/en/latest/reference/config_spec.html)
