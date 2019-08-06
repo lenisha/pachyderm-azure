@@ -1,4 +1,4 @@
-## Run Pachctl tool
+## Run Pachctl tool in separate cluster
 
 - Run docker image containing the `pachctl` tool in the container (as published in Dockerfile.pachctl )
 
@@ -14,6 +14,8 @@ kubectl run -it --rm pachctl --image=lenisha/pachctl --generator=run-pod/v1
    pachctl version
 ```
 
+Where xxxxxx - is address for the API LoadBalancer exposed for pachd service
+
 - Verify
 
 ```
@@ -21,4 +23,18 @@ kubectl run -it --rm pachctl --image=lenisha/pachctl --generator=run-pod/v1
   or
   cat ~/.pachyderm/config.json
 ```
+
+## Access PACHD Dashboard
+
+- Expose dash-lb service `kubectl apply -f dash.yaml`
+
+- Check IP of LoadBalancer `kubectl get svc`
+
+- Access Dashboard
+
+```
+http://<dash-host>:8080/app?port=8081
+```
+
+where `port` parameter points to exposed grpc port for websocket communication
 
