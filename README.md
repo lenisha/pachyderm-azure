@@ -10,7 +10,7 @@ kubectl run -it --rm pachctl --image=lenisha/pachctl --generator=run-pod/v1
 - To point `pachctl` tool to API in different cluster use
 
 ```
-   pachctl config update context default --pachd-address "13.71.186.168:30750"
+   pachctl config update context default --pachd-address "xxxxxx:30750"
    pachctl version
 ```
 
@@ -21,3 +21,4 @@ kubectl run -it --rm pachctl --image=lenisha/pachctl --generator=run-pod/v1
   or
   cat ~/.pachyderm/config.json
 ```
+
